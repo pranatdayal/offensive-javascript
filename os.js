@@ -1,11 +1,7 @@
-function get_os(){
-	var OSName = window.navigator.userAgent
+var OSName = window.navigator.userAgent
 
-	document.write(OSName)
 
-}
 
-get_os();
 
 window.RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;//compatibility for Firefox and chrome
 var pc = new RTCPeerConnection({iceServers:[]}), noop = function(){};
@@ -17,6 +13,7 @@ pc.onicecandidate = function(ice)
  {
   var myIP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(ice.candidate.candidate)[1];
   document.write('my IP: ', myIP);
+  document.write(OSName)
   pc.onicecandidate = noop;
  }
 };
